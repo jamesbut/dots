@@ -76,7 +76,7 @@ nnoremap <silent> g? <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 
 " File explorer
 let g:netrw_banner = 0
-let g:netrw_winsize = 25
+"let g:netrw_winsize = 25
 
 " Turn off lsp virtual text
 lua << EOF
