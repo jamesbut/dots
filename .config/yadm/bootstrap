@@ -1,6 +1,11 @@
 #!/bin/bash
 
 ####################
+# Pull submodules  #
+####################
+yadm pull --recurse-submodules
+
+####################
 # Common installs  #
 ####################
 if ! command -v starship &> /dev/null; then
