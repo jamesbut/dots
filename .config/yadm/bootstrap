@@ -1,0 +1,62 @@
+#!/bin/bash
+
+#####################
+# Install Homebrew  #
+#####################
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+
+    # install homebrew if it's missing
+    if ! command -v brew >/dev/null 2>&1; then
+
+        echo "Homebrew isn't installed, installing..."
+        xcode-select --install
+
+        echo "Installing homebrew"
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+
+    if [ -f "$HOME/.Brewfile" ]; then
+        echo "Updating homebrew bundle"
+        brew bundle --global
+    fi
+
+fi
+
+
+####################
+# Setup fish shell #
+####################
+
+if [ "$(basename "$SHELL")" = "fish" ]; then
+    echo "'fish' is already the default shell, no changes required."
+else
+    if ! grep "fish" /etc/shells; then
+        # Append fish binary to /etc/shells
+        echo /usr/local/bin/fish | sudo tee -a /etc/shells
+    fi
+
+    # Change default shell
+    chsh -s /usr/local/bin/fish
+
+    echo "'fish' was set as the default shell."
+fi
+
+
+###################################
+# Neovim install Plug and plugins #
+###################################
+
+if command -v nvim >/dev/null 2>&1; then
+    echo "Bootstraping neovim"
+    nvim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+fi
+
+
+#######################
+# Update repo remote  #
+#######################
+
+yadm remote set-url origin "git@github.com:jamesbut/dots.git"
