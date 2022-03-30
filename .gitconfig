@@ -1,1 +1,5 @@
-/Users/james/dots/.gitconfig
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = James Butterworth
+	email = jjbsports16@hotmail.co.uk
