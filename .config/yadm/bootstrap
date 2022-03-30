@@ -45,6 +45,7 @@ fi
 ##################
 if [ "$system_type" = "Linux" ]; then
     sudo apt install mypy
+    sudo snap install --classic nvim
 fi
 
 
