@@ -1,5 +1,15 @@
 #!/bin/bash
 
+####################
+# Common installs  #
+####################
+if ! command -v starship &> /dev/null; then
+    curl -sS https://starship.rs/install.sh | sh
+else
+    echo "Starship is already installed"
+fi
+
+
 #####################
 # Install Homebrew  #
 #####################
@@ -25,6 +35,13 @@ if [ "$system_type" = "Darwin" ]; then
 
 fi
 
+##################
+# Linux installs #
+##################
+if [ "$system_type" = "Linux" ]; then
+    sudo apt install mypy
+fi
+
 
 ####################
 # Setup fish shell #
@@ -43,6 +60,10 @@ else
 
     echo "'fish' was set as the default shell."
 fi
+
+# Rerun fish config
+chmod u+x ~/.config/fish/config.fish
+fish ~/.config/fish/config.fish
 
 
 ###################################
