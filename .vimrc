@@ -78,6 +78,9 @@ nnoremap <silent> g? <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 let g:netrw_banner = 0
 "let g:netrw_winsize = 25
 
+"" Write all buffers before navigating from Vim to tmux pane
+let g:tmux_navigator_save_on_switch = 2
+
 " Turn off lsp virtual text
 lua << EOF
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
