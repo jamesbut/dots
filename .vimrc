@@ -33,6 +33,9 @@ Plug 'itchyny/lightline.vim'
 " Vim tmux navigator
 Plug 'christoomey/vim-tmux-navigator'
 
+" Python folding
+Plug 'tmhedberg/SimpylFold'
+
 call plug#end()
 
 
@@ -56,6 +59,7 @@ set smarttab
 
 "Folding
 set foldmethod=syntax
+nnoremap <Space> za
 
 "Turn off arrow keys
 noremap <Up> <Nop>
@@ -63,12 +67,18 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+" Shortcutting split navigation, saving a keypress:
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 "Remove trailing white spaces
 autocmd BufWritePre * %s/\s\+$//e
 
 " Show line diagnostics in pop out window and navigate between them
 nnoremap <silent> g? <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
-"nnoremap <silent> <space>k <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> <C-j> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 "nnoremap <silent> <space>d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 
 " Map saving to space + h
