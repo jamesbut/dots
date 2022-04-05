@@ -60,6 +60,7 @@ set smarttab
 "Folding
 set foldmethod=syntax
 nnoremap <Space> za
+nnoremap <C-Space> zA
 
 "Turn off arrow keys
 noremap <Up> <Nop>
