@@ -8,11 +8,11 @@ endif
 "Plugins
 call plug#begin('~/.vim/plugged')
 
+"LSP server
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'octol/vim-cpp-enhanced-highlight'
 
-Plug 'davidhalter/jedi-vim'
+"C++ highlighting
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 "Auto complete
 Plug 'hrsh7th/nvim-cmp'
@@ -82,25 +82,12 @@ nnoremap <silent> g? <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap <silent> <C-j> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 "nnoremap <silent> <space>d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 
-" Map saving to space + h
-"nnoremap <S-h> :update<cr>
-
 " File explorer
 let g:netrw_banner = 0
 "let g:netrw_winsize = 25
 
 "" Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
-
-" Turn off lsp virtual text
-lua << EOF
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false
-    }
-)
-EOF
-
 
 " Autocompletion with hrsh7th/nvim-cmp
 set completeopt=menu,menuone,noselect
