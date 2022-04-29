@@ -13,6 +13,8 @@ Plug 'neovim/nvim-lspconfig'
 
 "C++ highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
+"fish script highlighting
+Plug 'dag/vim-fish'
 
 "Auto complete
 Plug 'hrsh7th/nvim-cmp'
@@ -74,8 +76,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+"Spellchecker toggle
+map <C-s> :setlocal spell! spelllang=en_gb<CR>
+
 "Remove trailing white spaces
-autocmd BufWritePre * %s/\s\+$//e
+"autocmd BufWritePre * %s/\s\+$//e
 
 " Show line diagnostics in pop out window and navigate between them
 nnoremap <silent> g? <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
