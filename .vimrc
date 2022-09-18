@@ -82,6 +82,9 @@ map <C-l> <C-w>l
 "Spellchecker toggle
 map <C-s> :setlocal spell! spelllang=en_gb<CR>
 
+"Full file path toggle
+map <C-p> :echo expand('%:p')<CR>
+
 "Remove trailing white spaces
 "autocmd BufWritePre * %s/\s\+$//e
 
